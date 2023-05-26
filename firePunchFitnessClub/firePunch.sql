@@ -26,20 +26,10 @@ DROP TABLE IF EXISTS `categoriaEjercicio`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categoriaEjercicio` (
   `idCategoria` int NOT NULL,
-  `nombreCategoria` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nombreCategoria` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`idCategoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `categoriaEjercicio`
---
-
-LOCK TABLES `categoriaEjercicio` WRITE;
-/*!40000 ALTER TABLE `categoriaEjercicio` DISABLE KEYS */;
-INSERT INTO `categoriaEjercicio` VALUES (1,'Pierna'),(2,'Pecho'),(3,'Espalda'),(4,'Brazo'),(5,'Abdomen');
-/*!40000 ALTER TABLE `categoriaEjercicio` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `categoriaEjercicio_SEQ`
@@ -52,16 +42,6 @@ CREATE TABLE `categoriaEjercicio_SEQ` (
   `next_val` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `categoriaEjercicio_SEQ`
---
-
-LOCK TABLES `categoriaEjercicio_SEQ` WRITE;
-/*!40000 ALTER TABLE `categoriaEjercicio_SEQ` DISABLE KEYS */;
-INSERT INTO `categoriaEjercicio_SEQ` VALUES (1);
-/*!40000 ALTER TABLE `categoriaEjercicio_SEQ` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `categoriaEjercicio_ejercicio`
@@ -81,15 +61,6 @@ CREATE TABLE `categoriaEjercicio_ejercicio` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `categoriaEjercicio_ejercicio`
---
-
-LOCK TABLES `categoriaEjercicio_ejercicio` WRITE;
-/*!40000 ALTER TABLE `categoriaEjercicio_ejercicio` DISABLE KEYS */;
-/*!40000 ALTER TABLE `categoriaEjercicio_ejercicio` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `cliente`
 --
 
@@ -98,28 +69,18 @@ DROP TABLE IF EXISTS `cliente`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cliente` (
   `idCliente` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `apellidos` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `edad` int DEFAULT NULL,
-  `altura` int DEFAULT NULL,
-  `peso` double DEFAULT NULL,
+  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `apellidos` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `edad` int NOT NULL,
+  `altura` int NOT NULL,
+  `peso` double NOT NULL,
   `fotoPerfil` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `idEntrenador` int DEFAULT NULL,
+  `idEntrenador` int NOT NULL,
   PRIMARY KEY (`idCliente`),
   KEY `idEntrenador` (`idEntrenador`),
   CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`idEntrenador`) REFERENCES `entrenador` (`idEntrenador`)
 ) ENGINE=InnoDB AUTO_INCREMENT=253 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cliente`
---
-
-LOCK TABLES `cliente` WRITE;
-/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'María','García López',30,165,60,'src/main/resources/image_1.png',1),(2,'Juan','Pérez Rodríguez',25,178,75,'src/main/resources/image_2.png',1),(3,'Sofía','Martínez Torres',28,170,65,'src/main/resources/image_3.png',2),(4,'Carlos','Gómez García',35,175,80,'src/main/resources/image_4.png',2),(5,'Ana','González Díaz',29,163,58,'src/main/resources/image_5.png',3),(6,'Pedro','Fernández Sánchez',32,180,85,'src/main/resources/image_6.png',3),(7,'Lucía','Ruiz Torres',27,168,62,'src/main/resources/image_7.png',4),(8,'Miguel','Sánchez López',26,176,77,'src/main/resources/image_8.png',4),(9,'Adriana','González Fernández',31,172,70,'src/main/resources/image_9.png',5),(10,'David','Hernández García',33,182,88,'src/main/resources/image_10.png',5),(11,'Laura','Pérez Ruiz',24,160,55,'src/main/resources/image_11.png',1),(12,'Alejandro','Torres Martínez',29,176,75,'src/main/resources/image_12.png',2),(13,'Carolina','García Sánchez',30,165,60,'src/main/resources/image_13.png',3),(14,'José','Pérez García',25,178,75,'src/main/resources/image_14.png',4),(15,'Silvia','Martínez Ruiz',28,170,65,'src/main/resources/image_15.png',5),(16,'Javier','Gómez Torres',35,175,80,'src/main/resources/image_16.png',1),(17,'Patricia','González Sánchez',29,163,58,'src/main/resources/image_17.png',2),(18,'Ismael','Fernández Díaz',32,180,85,'src/main/resources/image_18.png',3),(19,'Natalia','Ruiz García',27,168,62,'src/main/resources/image_19.png',4),(20,'Rubén','Sánchez Pérez',26,176,77,'src/main/resources/image_20.png',5),(21,'Anna','Fernández Cuadra',21,158,48,'src/main/resources/image_19.png',1),(22,'Pablo','Molero Marin',34,123,12,NULL,1),(52,'Prueba','Hola Adios',45,45,45,NULL,1),(102,'Prueba','De Verdad',34,34,34,NULL,1),(202,'Pruebita','Hola Adios',34,34,34,'C:\\Users\\bleras\\Desktop\\cartel1.png',4),(252,'Javier','Costa Soto',23,178,71,'C:\\Users\\Doble\\Downloads\\descarga (3).jpg',1);
-/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `cliente_SEQ`
@@ -134,16 +95,6 @@ CREATE TABLE `cliente_SEQ` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cliente_SEQ`
---
-
-LOCK TABLES `cliente_SEQ` WRITE;
-/*!40000 ALTER TABLE `cliente_SEQ` DISABLE KEYS */;
-INSERT INTO `cliente_SEQ` VALUES (351);
-/*!40000 ALTER TABLE `cliente_SEQ` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `ejercicio`
 --
 
@@ -152,27 +103,17 @@ DROP TABLE IF EXISTS `ejercicio`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ejercicio` (
   `idEjercicio` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `series` int DEFAULT NULL,
-  `repeticiones` int DEFAULT NULL,
-  `cargaKg` double DEFAULT NULL,
+  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `series` int NOT NULL,
+  `repeticiones` int NOT NULL,
+  `cargaKg` double NOT NULL,
   `fotoPerfil` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `idCategoria` int DEFAULT NULL,
+  `idCategoria` int NOT NULL,
   PRIMARY KEY (`idEjercicio`),
   KEY `idCategoria` (`idCategoria`),
   CONSTRAINT `ejercicio_ibfk_1` FOREIGN KEY (`idCategoria`) REFERENCES `categoriaEjercicio` (`idCategoria`)
 ) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ejercicio`
---
-
-LOCK TABLES `ejercicio` WRITE;
-/*!40000 ALTER TABLE `ejercicio` DISABLE KEYS */;
-INSERT INTO `ejercicio` VALUES (1,'Sentadillas',3,12,50.5,'src/main/resources/image_21.png',1),(2,'Press de banca',4,8,75,'src/main/resources/image_22.png',2),(3,'Remo con barra',3,10,60,'src/main/resources/image_23.png',3),(4,'Curl de bíceps con mancuernas',3,12,15,'src/main/resources/image_24.png',4),(5,'Press militar',4,8,40,'src/main/resources/image_25.png',2),(6,'Extensiones de tríceps en polea alta',3,12,25,'src/main/resources/image_26.png',4),(7,'Zancadas con mancuernas',3,12,12.5,'src/main/resources/image_27.png',1),(8,'Elevaciones laterales con mancuernas',3,12,10,'src/main/resources/image_28.png',4),(9,'Peso muerto',3,10,80,'src/main/resources/image_29.png',3),(10,'Flexiones de brazos',3,15,0,'src/main/resources/image_30.png',2),(11,'Curl de piernas acostado',3,12,30,'src/main/resources/image_31.png',1),(12,'Elevaciones frontales con barra',3,12,20,'src/main/resources/image_32.png',2),(13,'Polea al pecho',3,12,30,'src/main/resources/image_33.png',3),(14,'Abdominales',3,15,0,'src/main/resources/image_34.png',5),(15,'Remo en polea baja',3,12,40,'src/main/resources/image_35.png',3),(16,'Fondos en paralelas',3,12,0,'src/main/resources/image_36.png',2),(17,'Prensa de piernas',3,12,50,'src/main/resources/image_37.png',1),(18,'Press de hombros con mancuernas',3,12,25,'src/main/resources/image_38.png',4),(19,'Curl de bíceps con barra',3,12,25,'src/main/resources/image_39.png',4),(20,'Extensiones de tríceps con mancuernas',3,12,20,'src/main/resources/image_40.png',4);
-/*!40000 ALTER TABLE `ejercicio` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `ejercicio_SEQ`
@@ -187,16 +128,6 @@ CREATE TABLE `ejercicio_SEQ` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ejercicio_SEQ`
---
-
-LOCK TABLES `ejercicio_SEQ` WRITE;
-/*!40000 ALTER TABLE `ejercicio_SEQ` DISABLE KEYS */;
-INSERT INTO `ejercicio_SEQ` VALUES (151);
-/*!40000 ALTER TABLE `ejercicio_SEQ` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `entrenador`
 --
 
@@ -205,28 +136,18 @@ DROP TABLE IF EXISTS `entrenador`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `entrenador` (
   `idEntrenador` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `apellidos` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `edad` int DEFAULT NULL,
-  `usuario` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `contraseña` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nombre` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `apellidos` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `edad` int NOT NULL,
+  `usuario` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `contraseña` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `fotoPerfil` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idEntrenador`),
   UNIQUE KEY `usuario` (`usuario`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10001 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `entrenador`
---
-
-LOCK TABLES `entrenador` WRITE;
-/*!40000 ALTER TABLE `entrenador` DISABLE KEYS */;
-INSERT INTO `entrenador` VALUES (1,'Pablo','Molero Marín',21,'bleras','bleras@mail.com','vmpgwUWvJ00=','src/main/resources/image_10.png'),(2,'Jesús','Ramirez Pacual',56,'jesusramirez','jramirezp@mail.com','vmpgwUWvJ00=','src/main/resources/image_12.png'),(3,'María','García García',34,'mariagarcia','mgarciag@mail.com','vmpgwUWvJ00=','src/main/resources/image_11.png'),(4,'Raquel','Navarro López',21,'raquelnavarro','rnavarrol@mail.com','vmpgwUWvJ00=','src/main/resources/image_13.png'),(5,'Alan','McLure Alarcón',21,'alanmclure','amclurea@mail.com','vmpgwUWvJ00=','src/main/resources/image_14.png'),(10000,'Nadie','Nadie Nadie',99,'NoAsignado','nadie@noasignado.com','vmpgwUWvJ00=',NULL);
-/*!40000 ALTER TABLE `entrenador` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `entrenador_SEQ`
@@ -239,16 +160,6 @@ CREATE TABLE `entrenador_SEQ` (
   `next_val` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `entrenador_SEQ`
---
-
-LOCK TABLES `entrenador_SEQ` WRITE;
-/*!40000 ALTER TABLE `entrenador_SEQ` DISABLE KEYS */;
-INSERT INTO `entrenador_SEQ` VALUES (201);
-/*!40000 ALTER TABLE `entrenador_SEQ` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `entrenador_cliente`
@@ -268,15 +179,6 @@ CREATE TABLE `entrenador_cliente` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `entrenador_cliente`
---
-
-LOCK TABLES `entrenador_cliente` WRITE;
-/*!40000 ALTER TABLE `entrenador_cliente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `entrenador_cliente` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `realiza_ejercicio`
 --
 
@@ -292,15 +194,6 @@ CREATE TABLE `realiza_ejercicio` (
   CONSTRAINT `FKpqmebm5u200pcper8qalykil1` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `realiza_ejercicio`
---
-
-LOCK TABLES `realiza_ejercicio` WRITE;
-/*!40000 ALTER TABLE `realiza_ejercicio` DISABLE KEYS */;
-/*!40000 ALTER TABLE `realiza_ejercicio` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -311,4 +204,13 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-24  7:47:46
+-- Dump completed on 2023-05-24 17:01:10
+
+INSERT INTO `categoriaEjercicio` VALUES (1,'Pierna'),(2,'Pecho'),(3,'Espalda'),(4,'Brazo'),(5,'Abdomen');
+INSERT INTO `categoriaEjercicio_SEQ` VALUES (1);
+INSERT INTO `ejercicio` VALUES (1,'Sentadillas',3,12,50.5,'src/main/resources/image_21.png',1),(2,'Press de banca',4,8,75,'src/main/resources/image_22.png',2),(3,'Remo con barra',3,10,60,'src/main/resources/image_23.png',3),(4,'Curl de bíceps con mancuernas',3,12,15,'src/main/resources/image_24.png',4),(5,'Press militar',4,8,40,'src/main/resources/image_25.png',2),(6,'Extensiones de tríceps en polea alta',3,12,25,'src/main/resources/image_26.png',4),(7,'Zancadas con mancuernas',3,12,12.5,'src/main/resources/image_27.png',1),(8,'Elevaciones laterales con mancuernas',3,12,10,'src/main/resources/image_28.png',4),(9,'Peso muerto',3,10,80,'src/main/resources/image_29.png',3),(10,'Flexiones de brazos',3,15,0,'src/main/resources/image_30.png',2),(11,'Curl de piernas acostado',3,12,30,'src/main/resources/image_31.png',1),(12,'Elevaciones frontales con barra',3,12,20,'src/main/resources/image_32.png',2),(13,'Polea al pecho',3,12,30,'src/main/resources/image_33.png',3),(14,'Abdominales',3,15,0,'src/main/resources/image_34.png',5),(15,'Remo en polea baja',3,12,40,'src/main/resources/image_35.png',3),(16,'Fondos en paralelas',3,12,0,'src/main/resources/image_36.png',2),(17,'Prensa de piernas',3,12,50,'src/main/resources/image_37.png',1),(18,'Press de hombros con mancuernas',3,12,25,'src/main/resources/image_38.png',4),(19,'Curl de bíceps con barra',3,12,25,'src/main/resources/image_39.png',4),(20,'Extensiones de tríceps con mancuernas',3,12,20,'src/main/resources/image_40.png',4);
+INSERT INTO `ejercicio_SEQ` VALUES (51);
+INSERT INTO `entrenador` VALUES (1,'Pablo','Molero Marín',21,'bleras','bleras@mail.com','vmpgwUWvJ00=','src/main/resources/image_10.png'),(2,'Jesús','Ramirez Pacual',56,'jesusramirez','jramirezp@mail.com','vmpgwUWvJ00=','src/main/resources/image_12.png'),(3,'María','García García',34,'mariagarcia','mgarciag@mail.com','vmpgwUWvJ00=','src/main/resources/image_11.png'),(4,'Raquel','Navarro López',21,'raquelnavarro','rnavarrol@mail.com','vmpgwUWvJ00=','src/main/resources/image_13.png'),(5,'Moisés','Mascuñán',21,'moi','moijava@mail.com','vePPj54i1Sw=','src/main/resources/image_14.png'),(10000,'Nadie','Nadie Nadie',99,'NoAsignado','nadie@noasignado.com','vmpgwUWvJ00=',NULL);
+INSERT INTO `entrenador_SEQ` VALUES (51);
+INSERT INTO `cliente` VALUES (1,'María','García López',30,165,60,'src/main/resources/image_1.png',1),(2,'Juan','Pérez Rodríguez',25,178,75,'src/main/resources/image_2.png',1),(3,'Sofía','Martínez Torres',28,170,65,'src/main/resources/image_3.png',2),(4,'Carlos','Gómez García',35,175,80,'src/main/resources/image_4.png',2),(5,'Ana','González Díaz',29,163,58,'src/main/resources/image_5.png',3),(6,'Pedro','Fernández Sánchez',32,180,85,'src/main/resources/image_6.png',3),(7,'Lucía','Ruiz Torres',27,168,62,'src/main/resources/image_7.png',4),(8,'Miguel','Sánchez López',26,176,77,'src/main/resources/image_8.png',4),(9,'Adriana','González Fernández',31,172,70,'src/main/resources/image_9.png',5),(10,'David','Hernández García',33,182,88,'src/main/resources/image_10.png',5),(11,'Laura','Pérez Ruiz',24,160,55,'src/main/resources/image_11.png',1),(12,'Alejandro','Torres Martínez',29,176,75,'src/main/resources/image_12.png',2),(13,'Carolina','García Sánchez',30,165,60,'src/main/resources/image_13.png',3),(14,'José','Pérez García',25,178,75,'src/main/resources/image_14.png',4),(15,'Silvia','Martínez Ruiz',28,170,65,'src/main/resources/image_15.png',5),(16,'Javier','Gómez Torres',35,175,80,'src/main/resources/image_16.png',1),(17,'Patricia','González Sánchez',29,163,58,'src/main/resources/image_17.png',2),(18,'Ismael','Fernández Díaz',32,180,85,'src/main/resources/image_18.png',3),(19,'Natalia','Ruiz García',27,168,62,'src/main/resources/image_19.png',4),(20,'Rubén','Sánchez Pérez',26,176,77,'src/main/resources/image_20.png',5);
+INSERT INTO `cliente_SEQ` VALUES (30);
